@@ -67,11 +67,6 @@ public class UserProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_user_profile, container, false);
     }
 
-    public void logout(View view){
-        FirebaseAuth.getInstance().signOut(); //logout
-        startActivity(new Intent(appCompatActivity.getApplicationContext() , Login.class));
-        appCompatActivity.finish();
-    }
 
     public void loadProfile(View view){
         startActivity(new Intent(appCompatActivity.getApplicationContext(),Profile.class));

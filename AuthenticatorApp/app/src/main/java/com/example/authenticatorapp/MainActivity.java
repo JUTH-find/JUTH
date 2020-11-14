@@ -1,9 +1,12 @@
 package com.example.authenticatorapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -35,6 +38,28 @@ public class MainActivity extends AppCompatActivity {
         myTabLayout.setupWithViewPager(myViewPager);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.option_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
 
+        if(item.getItemId() == R.id.main_logout_option){
+            FirebaseAuth.getInstance().signOut(); //logout
+            startActivity(new Intent(getApplicationContext() , Login.class));
+            finish();
+        }
+        if(item.getItemId() == R.id.main_settings_option){
+
+        }
+        if(item.getItemId() == R.id.main_find_friends_option){
+
+        }
+        return true;
+    }
 }
