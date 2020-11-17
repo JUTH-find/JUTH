@@ -12,11 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +44,9 @@ public class GroupsFragment extends Fragment {
     //Database handling
     private RecyclerView groupRecyclerView;
     private DatabaseReference groupRef;
-
+    private FirebaseAuth fAuth;
+    private FirebaseFirestore fStore;
+    private String userId,userName;
 
 
     /**
@@ -73,13 +78,19 @@ public class GroupsFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_groups, container, false);
 
         groupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
+
 
         FirebaseRecyclerOptions<Groups_module> group_list = new FirebaseRecyclerOptions.Builder<Groups_module>().setQuery(groupRef,Groups_module.class).build();
         FirebaseRecyclerAdapter<Groups_module,GroupViewHolder> adapter = new FirebaseRecyclerAdapter<Groups_module, GroupViewHolder>(group_list) {
@@ -87,7 +98,16 @@ public class GroupsFragment extends Fragment {
             protected void onBindViewHolder(@NonNull GroupViewHolder holder, int position, @NonNull Groups_module model) {
                 holder.group_name.setText(model.getGroup_name());
                 holder.group_description.setText(model.getGroup_description());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String group_id = getRef(position).getKey();
+                        groupRef.child(group_id).child("Users").child(userId).setValue("");
+
+                    }
+                });
             }
+
 
             @NonNull
             @Override
@@ -103,6 +123,8 @@ public class GroupsFragment extends Fragment {
         groupRecyclerView.setAdapter(adapter);
         adapter.startListening();
         return view;
+
+
     }
 
 
