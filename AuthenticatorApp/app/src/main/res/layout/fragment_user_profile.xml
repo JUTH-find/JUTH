@@ -7,13 +7,6 @@
     tools:context=".UserProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="UserProfile Fragment"
-        android:layout_centerInParent="true"
-        android:textSize="26sp"
-        android:textStyle="bold"/>
 
 
     <Button
@@ -43,6 +36,18 @@
         android:layout_marginRight="78dp"
         android:layout_marginBottom="353dp"
         android:src="@drawable/usertest" />
+
+    <TextView
+        android:id="@+id/testViewProfile"
+        android:layout_width="136dp"
+        android:layout_height="69dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="103dp"
+        android:layout_marginRight="103dp"
+        android:layout_marginBottom="331dp"
+        android:text="TextView" />
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.authenticatorapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -101,9 +102,12 @@ public class GroupsFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String group_id = getRef(position).getKey();
-                        groupRef.child(group_id).child("Users").child(userId).setValue("");
 
+                        String group_id = getRef(position).getKey();
+                        //groupRef.child(group_id).child("Users").child(userId).setValue("");
+                        Intent groupIntent = new Intent(getActivity(),group_join_activity.class);
+                        groupIntent.putExtra("group_id",group_id);
+                        startActivity(groupIntent);
                     }
                 });
             }
