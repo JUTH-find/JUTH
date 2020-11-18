@@ -38,7 +38,6 @@ public class SettingsActivity extends AppCompatActivity {
         if(requestCode == 1000){
             if(resultCode == Activity.RESULT_OK){
                 Uri imageuri = data.getData();
-                //profileImage.setImageURI(imageuri);
 
                 uploadImageToFirebase(imageuri);
 
