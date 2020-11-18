@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileFragment">
 
-    <ImageView
-        android:id="@+id/imageViewUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
@@ -82,6 +72,17 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/imageViewUser"
+        android:layout_width="205dp"
+        android:layout_height="260dp"
+        android:src="@drawable/usertest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.089" />
 
 
     <!--    <TextView-->
