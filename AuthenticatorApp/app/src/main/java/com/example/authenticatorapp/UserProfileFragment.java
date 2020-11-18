@@ -1,20 +1,26 @@
 package com.example.authenticatorapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,9 +39,11 @@ public class UserProfileFragment extends Fragment {
     private String mParam2;
 
     private TextView fullName,email,phone;
+    private ImageView profileImage;
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
     private String userId;
+    private StorageReference storageReference;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -77,6 +85,7 @@ public class UserProfileFragment extends Fragment {
         phone = v.findViewById(R.id.profilePhone);
         fullName = v.findViewById(R.id.profileName);
         email = v.findViewById(R.id.profileEmail);
+        profileImage = v.findViewById(R.id.imageViewUser);
 
         return v;
     }
@@ -98,5 +107,14 @@ public class UserProfileFragment extends Fragment {
                         email.setText(task.getResult().getString("email"));
                     }
                 });
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
     }
 }
