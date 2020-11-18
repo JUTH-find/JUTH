@@ -3,6 +3,7 @@ package com.example.authenticatorapp;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -10,8 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +35,11 @@ public class UserProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-//    private AppCompatActivity appCompatActivity = new AppCompatActivity();
-    Button btnProf;
+
+    private TextView fullName,email,phone;
+    private FirebaseAuth fAuth;
+    private FirebaseFirestore fStore;
+    private String userId;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -68,16 +78,29 @@ public class UserProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
-        //add click function by code
-        btnProf = v.findViewById(R.id.btnProfile);
-        btnProf.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),Profile.class));
-            }
-        });
+        phone = v.findViewById(R.id.profilePhone);
+        fullName = v.findViewById(R.id.profileName);
+        email = v.findViewById(R.id.profileEmail);
 
         return v;
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
+        userId = fAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        phone.setText(task.getResult().getString("phone"));
+                        fullName.setText(task.getResult().getString("fName"));
+                        email.setText(task.getResult().getString("email"));
+                    }
+                });
+    }
 }

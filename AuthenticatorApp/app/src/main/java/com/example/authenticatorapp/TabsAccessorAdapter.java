@@ -27,7 +27,6 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
             case 3:
                 UserProfileFragment userProfileFragment = new UserProfileFragment();
                 return userProfileFragment;
-
             default:
                 return null;
         }
