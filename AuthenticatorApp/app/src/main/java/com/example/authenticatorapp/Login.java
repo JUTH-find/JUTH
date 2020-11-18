@@ -21,12 +21,23 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login extends AppCompatActivity {
     EditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn, forgotTextLink;
     FirebaseAuth fAuth;
+    FirebaseFirestore db;
+    private DatabaseReference RootRef;
+    String username = "";
 
 
     @Override
@@ -37,9 +48,12 @@ public class Login extends AppCompatActivity {
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createText);
         forgotTextLink = findViewById(R.id.forgotPassword);
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +81,25 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            String currentUid = fAuth.getCurrentUser().getUid();
+
+
+                            db.collection("users").document(currentUid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        DocumentSnapshot documentSnapshot = task.getResult();
+                                        if(documentSnapshot.exists() && documentSnapshot != null){
+                                            username = documentSnapshot.getString("fName");
+                                            System.out.println(username);
+                                            RootRef.child("Users").child(currentUid).child("Name").setValue(username);
+                                        }
+                                    }
+                                }
+                            });
+
+
+
                             Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 //                            startActivity(new Intent(getApplicationContext(), Profile.class));
