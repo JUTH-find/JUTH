@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
                                             username = documentSnapshot.getString("fName");
                                             System.out.println(username);
                                             RootRef.child("Users").child(currentUid).child("Name").setValue(username);
+                                            RootRef.child("Users").child(currentUid).child("Group").setValue("");
                                         }
                                     }
                                 }
