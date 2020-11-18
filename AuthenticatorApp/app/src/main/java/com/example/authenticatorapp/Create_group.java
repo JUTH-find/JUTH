@@ -2,6 +2,7 @@ package com.example.authenticatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,9 @@ public class Create_group extends AppCompatActivity {
 
                 myRef.child("Groups").child(gKey).child("group_name").setValue(gName);
                 myRef.child("Groups").child(gKey).child("group_description").setValue(gDesc);
+
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
 
 
 

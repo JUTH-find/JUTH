@@ -32,6 +32,7 @@
                     android:id="@+id/group_layout_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:paddingLeft="10sp"
                     android:text="group name"
                     android:textSize="20sp"
                     android:textStyle="bold"></TextView>
@@ -40,9 +41,9 @@
                     android:id="@+id/group_layout_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:paddingLeft="10sp"
                     android:text="group description"
-                    android:textSize="18sp"
-                    ></TextView>
+                    android:textSize="18sp"></TextView>
 
 
             </LinearLayout>

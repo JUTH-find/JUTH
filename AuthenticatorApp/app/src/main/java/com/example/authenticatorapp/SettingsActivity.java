@@ -89,6 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent openGallertIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGallertIntent,1000);
+                finish();
             }
         });
 

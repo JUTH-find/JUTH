@@ -3,6 +3,7 @@ package com.example.authenticatorapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +50,8 @@ public class group_join_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 joinGroup();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 

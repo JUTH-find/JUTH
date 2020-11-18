@@ -101,6 +101,7 @@ public class Login extends AppCompatActivity {
 
                             Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
 //                            startActivity(new Intent(getApplicationContext(), Profile.class));
 
                         }
@@ -116,6 +117,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Register.class));
+                finish();
 //                startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
