@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AuthenticatorApp">
-        <activity android:name=".Create_group" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
+        <activity
+            android:name=".Create_group"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".Login" />
         <activity android:name=".Register">

@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(item.getItemId() == R.id.main_settings_option){
-
+            startActivity(new Intent(getApplicationContext() , SettingsActivity.class));
         }
         if(item.getItemId() == R.id.main_find_friends_option){
 
