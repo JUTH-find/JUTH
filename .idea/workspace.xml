@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="19a8bfe8-69ee-435d-8a3c-d3d98b956339" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/androidTest/java/com/example/authenticatorapp/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/androidTest/java/com/example/authenticatorapp/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/java/com/example/authenticatorapp/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable/textview_border.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/drawable/textview_border.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/font/audiowide.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/font/audiowide.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/font_certs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/font_certs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/preloaded_fonts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/app/src/test/java/com/example/authenticatorapp/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/app/src/test/java/com/example/authenticatorapp/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthenticatorApp/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/AuthenticatorApp/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kSxPKDAIkLmUljWNGHW5Rn1T8j" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AuthenticatorApp" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19a8bfe8-69ee-435d-8a3c-d3d98b956339" name="Default Changelist" comment="" />
+      <created>1605707768643</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605707768643</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605707887802">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605707887802" />
+  </component>
+</project>
