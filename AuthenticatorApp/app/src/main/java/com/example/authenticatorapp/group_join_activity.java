@@ -41,12 +41,7 @@ public class group_join_activity extends AppCompatActivity {
         retrieveGroupInfo();
 
 
-        if(group_id.equals(group_id)){
 
-            joinGroupBtn.setEnabled(false);
-            joinGroupBtn.setText(user_group_id);
-
-        }
 
 
         joinGroupBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +64,12 @@ public class group_join_activity extends AppCompatActivity {
                 user_group_id = snapshot.child("Users").child(user_id).child("Group").getValue().toString();
                 groupTextName.setText(groupName);
                 groupTextDesc.setText(groupDesc);
+                if(group_id.equals(user_group_id)){
+
+                    joinGroupBtn.setEnabled(false);
+                    joinGroupBtn.setText("JOINED");
+
+                }
 
             }
 
