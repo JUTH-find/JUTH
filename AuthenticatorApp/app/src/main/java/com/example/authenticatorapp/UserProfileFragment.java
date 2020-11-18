@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,7 +28,8 @@ public class UserProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private AppCompatActivity appCompatActivity = new AppCompatActivity();
+//    private AppCompatActivity appCompatActivity = new AppCompatActivity();
+    Button btnProf;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -64,11 +66,22 @@ public class UserProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
+
+        //add click function by code
+        btnProf = v.findViewById(R.id.btnProfile);
+        btnProf.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),Profile.class));
+            }
+        });
+
+        return v;
     }
 
 
-    public void loadProfile(View view){
-        startActivity(new Intent(appCompatActivity.getApplicationContext(),Profile.class));
-    }
+//    public void loadProfile(View view){
+//        startActivity(new Intent(appCompatActivity.getApplicationContext(),Profile.class));
+//    }
 }

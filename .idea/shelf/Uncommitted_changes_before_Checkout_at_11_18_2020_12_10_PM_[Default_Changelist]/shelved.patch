@@ -1,0 +1,37 @@
+Index: .idea/JUTH.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/JUTH.iml	(revision 98b76f3dd5dc4d926ed24110281c54f15c088ba4)
++++ .idea/JUTH.iml	(date 1605676160551)
+@@ -1,9 +1,24 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <module type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../JUTH/gen" />
++        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../JUTH/gen" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../JUTH/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../JUTH/res" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../JUTH/assets" />
++        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../JUTH/libs" />
++        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../JUTH/proguard_logs" />
++      </configuration>
++    </facet>
++  </component>
+   <component name="NewModuleRootManager" inherit-compiler-output="true">
+     <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
++    </content>
++    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file

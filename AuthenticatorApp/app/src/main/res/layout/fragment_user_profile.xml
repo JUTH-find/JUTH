@@ -22,7 +22,6 @@
         android:layout_marginStart="159dp"
         android:layout_marginLeft="159dp"
         android:layout_marginTop="476dp"
-        android:onClick="loadProfile"
         android:text="Profile">
     </Button>
 
