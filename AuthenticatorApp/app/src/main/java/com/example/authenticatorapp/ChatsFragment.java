@@ -48,10 +48,11 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference messagedb;
+    DatabaseReference messagedb,userRef;
     MessageAdapter messageAdapter;
-    FirebaseUser user;
+    FirebaseAuth fAuth;
     List<Message> messages;
+    String user_id;
 
     RecyclerView rvMessage;
     EditText etMessage;
@@ -91,7 +92,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
     public void onClick(View view){
         if(!TextUtils.isEmpty(etMessage.getText().toString())){
-            Message message = new Message(etMessage.getText().toString(), "Teehid");
+            Message message = new Message(etMessage.getText().toString(), AllMethods.name);
             etMessage.setText("");
             messagedb.push().setValue(message);
         }
@@ -101,10 +102,12 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        fAuth = FirebaseAuth.getInstance();
         View v = inflater.inflate(R.layout.fragment_chats, container, false);
         auth = FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         database = FirebaseDatabase.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        user_id = fAuth.getCurrentUser().getUid();
 
         rvMessage = (RecyclerView)v.findViewById(R.id.rvMessage);
         etMessage = (EditText)v.findViewById(R.id.messageBox);
@@ -119,13 +122,11 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onStart(){
         super.onStart();
-        final FirebaseUser currentUser = auth.getCurrentUser();
 
-        database.getReference("Users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener(){
+        database.getReference().child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dss) {
-                user = dss.getValue(FirebaseUser.class);
-                AllMethods.name = "Teehid";
+                AllMethods.name = dss.child(user_id).child("Name").getValue().toString();
 
             }
 
