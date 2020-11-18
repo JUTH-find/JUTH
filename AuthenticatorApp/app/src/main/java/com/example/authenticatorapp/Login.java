@@ -69,6 +69,8 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                            startActivity(new Intent(getApplicationContext(), Profile.class));
+
                         }
                         else{
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -82,6 +84,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Register.class));
+//                startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
 
