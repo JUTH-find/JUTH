@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class GroupsFragment extends Fragment {
     private String userId,userName;
 
 
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -77,6 +79,8 @@ public class GroupsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
     }
 
 
@@ -91,6 +95,7 @@ public class GroupsFragment extends Fragment {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+
 
 
         FirebaseRecyclerOptions<Groups_module> group_list = new FirebaseRecyclerOptions.Builder<Groups_module>().setQuery(groupRef,Groups_module.class).build();

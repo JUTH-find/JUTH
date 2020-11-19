@@ -28,7 +28,6 @@ public class SettingsActivity extends AppCompatActivity {
     Button changeProfileImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
-    FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
 
