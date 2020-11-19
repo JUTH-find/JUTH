@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -36,7 +37,6 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class ChatsFragment extends Fragment implements View.OnClickListener{
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -48,7 +48,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference messagedb,userRef;
+    DatabaseReference messagedb, userRef, groupRef;
     MessageAdapter messageAdapter;
     FirebaseAuth fAuth;
     List<Message> messages;
@@ -82,6 +82,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -104,11 +105,10 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         fAuth = FirebaseAuth.getInstance();
         View v = inflater.inflate(R.layout.fragment_chats, container, false);
-        auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        groupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
         database = FirebaseDatabase.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
-
         rvMessage = (RecyclerView)v.findViewById(R.id.rvMessage);
         etMessage = (EditText)v.findViewById(R.id.messageBox);
         btSend = (Button)v.findViewById(R.id.sendButton);
@@ -127,6 +127,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onDataChange(@NonNull DataSnapshot dss) {
                 AllMethods.name = dss.child(user_id).child("Name").getValue().toString();
+                AllMethods.group_id = dss.child(user_id).child("Group").getValue().toString();
 
             }
 
@@ -136,7 +137,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        messagedb = database.getReference("message");
+        messagedb = database.getReference("Groups").child(AllMethods.group_id).child("group_messages");
         messagedb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
