@@ -40,7 +40,6 @@ public class Create_group extends AppCompatActivity {
                 String gDesc = groupDescription.getText().toString();
                 String gKey = myRef.push().getKey();
 
-
                 myRef.child("Groups").child(gKey).child("group_name").setValue(gName);
                 myRef.child("Groups").child(gKey).child("group_description").setValue(gDesc);
 

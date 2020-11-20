@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -42,14 +43,12 @@ public class group_join_activity extends AppCompatActivity {
         retrieveGroupInfo();
 
 
-
-
-
         joinGroupBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 joinGroup();
+                Toast.makeText(getApplicationContext(), "Refresh before chat!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
@@ -85,7 +84,6 @@ public class group_join_activity extends AppCompatActivity {
     }
 
     private void joinGroup(){
-
         dataRef.child("Users").child(user_id).child("Group").setValue(group_id);
         joinGroupBtn.setText("JOINED");
         joinGroupBtn.setEnabled(false);

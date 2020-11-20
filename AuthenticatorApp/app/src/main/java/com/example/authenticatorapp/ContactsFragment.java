@@ -2,11 +2,27 @@ package com.example.authenticatorapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +39,14 @@ public class ContactsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    FirebaseDatabase database;
+    DatabaseReference memberdb;
+    FirebaseAuth fAuth;
+    RecyclerView rvMembers;
+    List<String> members;
+    String user_id;
+    MemberAdapter memberAdapter;
 
     public ContactsFragment() {
         // Required empty public constructor
@@ -59,6 +83,59 @@ public class ContactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contacts, container, false);
+        View v = inflater.inflate(R.layout.fragment_contacts, container, false);
+        fAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        rvMembers = (RecyclerView)v.findViewById(R.id.rvMembers);
+        return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        memberdb = database.getReference("Groups").child(AllMethods.group_id).child("Users");
+        memberdb.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
+                String test = dss.getValue(String.class);
+                members.add(test);
+                displayMember(members);
+            }
+
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dss) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void onResume(){
+        super.onResume();
+        members = new ArrayList<>();
+    }
+
+    private void displayMember(List<String> members) {
+        rvMembers.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        memberAdapter = new MemberAdapter(getContext(), members, memberdb);
+        rvMembers.setAdapter(memberAdapter);
     }
 }

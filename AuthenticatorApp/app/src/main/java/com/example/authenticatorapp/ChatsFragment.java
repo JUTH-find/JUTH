@@ -1,5 +1,6 @@
 package com.example.authenticatorapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +48,9 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
 
-    FirebaseAuth auth;
+    private static String TAG = "chatFragment";
     FirebaseDatabase database;
-    DatabaseReference messagedb, userRef, groupRef;
+    DatabaseReference messagedb;
     MessageAdapter messageAdapter;
     FirebaseAuth fAuth;
     List<Message> messages;
@@ -57,6 +59,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     RecyclerView rvMessage;
     EditText etMessage;
     Button btSend;
+    Button btRefresh;
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -82,47 +85,51 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        Log.i(TAG,"onCreate");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     public void onClick(View view){
-        if(!TextUtils.isEmpty(etMessage.getText().toString())){
-            Message message = new Message(etMessage.getText().toString(), AllMethods.name);
-            etMessage.setText("");
-            messagedb.push().setValue(message);
+        if(view.getId() == R.id.btSend) {
+            if (!TextUtils.isEmpty(etMessage.getText().toString())) {
+                Message message = new Message(etMessage.getText().toString(), AllMethods.name);
+                etMessage.setText("");
+                messagedb.push().setValue(message);
+            }
+        }
+        else if(view.getId() == R.id.btRefresh){
+            startActivity(new Intent(getActivity(), MainActivity.class));
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        fAuth = FirebaseAuth.getInstance();
         View v = inflater.inflate(R.layout.fragment_chats, container, false);
-        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        groupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+        fAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         rvMessage = (RecyclerView)v.findViewById(R.id.rvMessage);
         etMessage = (EditText)v.findViewById(R.id.messageBox);
-        btSend = (Button)v.findViewById(R.id.sendButton);
+        btSend = (Button)v.findViewById(R.id.btSend);
+        btRefresh = (Button)v.findViewById(R.id.btRefresh);
         btSend.setOnClickListener(this);
+        btRefresh.setOnClickListener(this);
         messages = new ArrayList<>();
+
         return v;
     }
 
-
-
     @Override
     public void onStart(){
+        Log.i(TAG,"onStart");
         super.onStart();
-
         database.getReference().child("Users").addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot dss) {
@@ -147,6 +154,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
                 displayMessages(messages);
             }
 
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
                 Message message = dss.getValue(Message.class);
@@ -163,7 +171,6 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
                     }
                 }
                 messages = newMessages;
-
                 displayMessages(messages);
             }
 
@@ -180,6 +187,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
                     }
                 }
                 messages = newMessages;
+                Log.i(TAG,"onCreateView");
                 displayMessages(messages);
             }
 
@@ -193,6 +201,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
             }
         });
+
     }
 
     public void onResume(){

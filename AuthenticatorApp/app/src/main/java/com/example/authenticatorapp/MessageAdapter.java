@@ -43,7 +43,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
         if(message.getName().equals(AllMethods.name)){
             holder.tvTitle.setText("You: " + message.getMessage());
             holder.tvTitle.setGravity(Gravity.START);
-            holder.l1.setBackgroundColor(Color.parseColor("#EF9E73"));
+            holder.l1.setBackgroundColor(Color.parseColor("#FAB30F"));
 
         }
         else{
@@ -63,7 +63,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
         LinearLayout l1;
         public MessageAdapterViewHolder(View itemView) {
             super(itemView);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle1);
             l1 = (LinearLayout) itemView.findViewById((R.id.l1message));
         }
 

@@ -8,7 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMessage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="593dp"
         android:layout_marginBottom="45dp" />
 
     <RelativeLayout
@@ -35,13 +35,21 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sendButton"
+                android:id="@+id/btSend"
                 android:text="Send"
                 android:textColor="@color/white"
                 android:background="#7100FC"
                 />
         </LinearLayout>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:text="Refresh" />
 
 
 </RelativeLayout>
