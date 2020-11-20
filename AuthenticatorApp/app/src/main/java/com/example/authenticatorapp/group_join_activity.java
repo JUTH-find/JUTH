@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 public class group_join_activity extends AppCompatActivity {
 
@@ -84,7 +85,9 @@ public class group_join_activity extends AppCompatActivity {
     }
 
     private void joinGroup(){
+        dataRef.child("Groups").child(AllMethods.group_id).child("Users").child(user_id).removeValue();
         dataRef.child("Users").child(user_id).child("Group").setValue(group_id);
+        dataRef.child("Groups").child(group_id).child("Users").child(user_id).setValue(AllMethods.name);
         joinGroupBtn.setText("JOINED");
         joinGroupBtn.setEnabled(false);
 

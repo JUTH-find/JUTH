@@ -104,7 +104,6 @@ public class GroupsFragment extends Fragment {
                     public void onClick(View view) {
 
                         String group_id = getRef(position).getKey();
-                        groupRef.child(group_id).child("Users").child(userId).setValue(AllMethods.name);
                         Intent groupIntent = new Intent(getActivity(),group_join_activity.class);
                         groupIntent.putExtra("group_id",group_id);
                         startActivity(groupIntent);
