@@ -99,8 +99,8 @@ public class ContactsFragment extends Fragment {
         memberdb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
-                String test = dss.getValue(String.class);
-                members.add(test);
+                String mem = dss.getValue(String.class);
+                members.add(mem);
                 displayMember(members);
             }
 
@@ -112,6 +112,16 @@ public class ContactsFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dss) {
+                String mem = dss.getValue(String.class);
+                List<String> newMembers = new ArrayList<String>();
+
+                for(String m: members){
+                    if(!m.equals(mem)){
+                        newMembers.add(m);
+                    }
+                }
+                members = newMembers;
+                displayMember(members);
 
             }
 

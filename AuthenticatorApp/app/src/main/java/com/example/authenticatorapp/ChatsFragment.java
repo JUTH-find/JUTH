@@ -161,21 +161,6 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dss, @Nullable String previousChildName) {
-                Message message = dss.getValue(Message.class);
-                message.setKey(dss.getKey());
-
-                List<Message> newMessages = new ArrayList<Message>();
-
-                for(Message m: messages){
-                    if(m.getKey().equals(message.getKey())){
-                        newMessages.add(message);
-                    }
-                    else{
-                        newMessages.add(m);
-                    }
-                }
-                messages = newMessages;
-                displayMessages(messages);
             }
 
             @Override
@@ -191,7 +176,6 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
                     }
                 }
                 messages = newMessages;
-                Log.i(TAG,"onCreateView");
                 displayMessages(messages);
             }
 
