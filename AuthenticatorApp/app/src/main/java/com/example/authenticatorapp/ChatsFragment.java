@@ -1,6 +1,7 @@
 package com.example.authenticatorapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -30,9 +32,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.auth.User;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,7 +68,6 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     EditText etMessage;
     Button btSend;
     Button btRefresh;
-    SwipeRefreshLayout swipeRefreshLayout;
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -98,7 +104,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         if(view.getId() == R.id.btSend) {
             if (!TextUtils.isEmpty(etMessage.getText().toString())) {
-                Message message = new Message(etMessage.getText().toString(), AllMethods.name);
+                Message message = new Message(etMessage.getText().toString(), AllMethods.name, user_id);
                 etMessage.setText("");
                 messagedb.push().setValue(message);
             }

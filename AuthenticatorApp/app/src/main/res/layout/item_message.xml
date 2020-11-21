@@ -6,6 +6,8 @@
 
     android:padding="5dp">
 
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,16 +24,23 @@
                 android:orientation="horizontal"
                 android:id="@+id/l1message"
                 >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imUser"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/usertest">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
                 <TextView
+                    android:id="@+id/tvTitle1"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:text="Hello"
-                    android:id="@+id/tvTitle1"
-                    android:padding="5dp"
                     android:layout_weight="1"
-                    />
+                    android:padding="10dp"
+                    android:text="Hello"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>

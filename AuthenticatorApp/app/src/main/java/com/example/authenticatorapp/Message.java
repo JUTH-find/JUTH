@@ -4,12 +4,22 @@ public class Message {
     String message;
     String name;
     String key;
+    String uid;
 
     public Message(){}
 
-    public Message(String message, String name) {
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public Message(String message, String name, String uid) {
         this.message = message;
         this.name = name;
+        this.uid = uid;
         this.key = key;
     }
 

@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -29,9 +30,10 @@ public class SettingsActivity extends AppCompatActivity {
     Button changeProfileImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
-    FirebaseUser user;
+    FirebaseDatabase database;
     ImageView profileImage;
     StorageReference storageReference;
+    String imageURL;
     private Toolbar mToolbar;
 
     @Override
@@ -55,7 +57,10 @@ public class SettingsActivity extends AppCompatActivity {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+                        imageURL = uri.toString();
                         Picasso.get().load(uri).into(profileImage);
+                        database.getInstance().getReference().child("Users").child(fAuth.getCurrentUser().getUid()).child("image").setValue(imageURL);
+
                     }
                 });
             }

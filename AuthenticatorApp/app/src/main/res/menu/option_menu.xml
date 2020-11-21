@@ -10,7 +10,7 @@
     </item>
 
     <item
-        android:title="Settings"
+        android:title="Change profile picture"
         android:id="@+id/main_settings_option"
         app:showAsAction="never"
         >
