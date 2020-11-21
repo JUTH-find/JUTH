@@ -21,6 +21,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,6 +102,13 @@ public class GroupsFragment extends Fragment {
             protected void onBindViewHolder(@NonNull GroupViewHolder holder, int position, @NonNull Groups_module model) {
                 holder.group_name.setText(model.getGroup_name());
                 holder.group_description.setText(model.getGroup_description());
+                if(model.getImage()==null){
+                    holder.image.setImageResource(R.drawable.usertest);
+
+                }
+                else {
+                    Picasso.get().load(model.getImage()).into(holder.image);
+                }
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -133,6 +143,7 @@ public class GroupsFragment extends Fragment {
 
     public static class GroupViewHolder extends RecyclerView.ViewHolder {
         TextView group_name,group_description;
+        CircleImageView image;
 
 
         public GroupViewHolder(@NonNull View itemView) {
@@ -140,6 +151,7 @@ public class GroupsFragment extends Fragment {
 
             group_name = itemView.findViewById(R.id.group_layout_name);
             group_description = itemView.findViewById(R.id.group_layout_desc);
+            image = itemView.findViewById(R.id.group_profile_image);
         }
     }
 }

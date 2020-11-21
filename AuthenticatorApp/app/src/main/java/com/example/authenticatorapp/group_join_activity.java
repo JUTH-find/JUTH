@@ -1,6 +1,7 @@
 package com.example.authenticatorapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,9 +22,9 @@ import com.google.firebase.firestore.auth.User;
 
 public class group_join_activity extends AppCompatActivity {
 
-    private String group_id,user_id,user_group_id;
+    private String group_id,user_id,user_group_id,groupName,groupDesc;
     private TextView groupTextName,groupTextDesc;
-    private Button joinGroupBtn;
+    private Button joinGroupBtn,delGroupBtn;
     private DatabaseReference dataRef;
     private FirebaseAuth fAuth;
 
@@ -35,6 +37,7 @@ public class group_join_activity extends AppCompatActivity {
         groupTextName = (TextView) findViewById(R.id.group_intent_name);
         groupTextDesc = (TextView) findViewById(R.id.group_intent_desc);
         joinGroupBtn = (Button) findViewById(R.id.join_group_button);
+        delGroupBtn = (Button) findViewById(R.id.delete_group_button);
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
 
@@ -50,8 +53,18 @@ public class group_join_activity extends AppCompatActivity {
             public void onClick(View v) {
                 joinGroup();
                 Toast.makeText(getApplicationContext(), "Refresh before chat!", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                //finish();
+            }
+        });
+
+        delGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteGroup();
+                //Toast.makeText(getApplicationContext(), "Group deleted!", Toast.LENGTH_LONG).show();
+                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
             }
         });
 
@@ -59,11 +72,17 @@ public class group_join_activity extends AppCompatActivity {
     }
 
     private void retrieveGroupInfo(){
+
+
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String groupName = snapshot.child("Groups").child(group_id).child("group_name").getValue().toString();
-                String groupDesc = snapshot.child("Groups").child(group_id).child("group_description").getValue().toString();
+                if(snapshot.child("Groups").child(group_id).child("group_name").getValue()!= null &&
+                        snapshot.child("Groups").child(group_id).child("group_description").getValue()!= null ){
+                    groupName = snapshot.child("Groups").child(group_id).child("group_name").getValue().toString();
+                    groupDesc = snapshot.child("Groups").child(group_id).child("group_description").getValue().toString();
+                }
+
                 user_group_id = snapshot.child("Users").child(user_id).child("Group").getValue().toString();
                 groupTextName.setText(groupName);
                 groupTextDesc.setText(groupDesc);
@@ -71,6 +90,8 @@ public class group_join_activity extends AppCompatActivity {
 
                     joinGroupBtn.setEnabled(false);
                     joinGroupBtn.setText("JOINED");
+                    delGroupBtn.setVisibility(View.VISIBLE);
+                    delGroupBtn.setEnabled(true);
 
                 }
 
@@ -90,6 +111,14 @@ public class group_join_activity extends AppCompatActivity {
         dataRef.child("Groups").child(group_id).child("Users").child(user_id).setValue(AllMethods.name);
         joinGroupBtn.setText("JOINED");
         joinGroupBtn.setEnabled(false);
+
+
+    }
+
+    private void deleteGroup(){
+        dataRef.child("Groups").child(group_id).removeValue();
+        dataRef.child("Users").child(user_id).child("Group").setValue("");
+        finish();
 
     }
 

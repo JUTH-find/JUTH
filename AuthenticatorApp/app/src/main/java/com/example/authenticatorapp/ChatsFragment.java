@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
@@ -60,6 +61,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
     EditText etMessage;
     Button btSend;
     Button btRefresh;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -103,6 +105,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
         }
         else if(view.getId() == R.id.btRefresh){
             startActivity(new Intent(getActivity(), MainActivity.class));
+
         }
     }
 
@@ -122,6 +125,7 @@ public class ChatsFragment extends Fragment implements View.OnClickListener{
         btSend.setOnClickListener(this);
         btRefresh.setOnClickListener(this);
         messages = new ArrayList<>();
+
 
         return v;
     }

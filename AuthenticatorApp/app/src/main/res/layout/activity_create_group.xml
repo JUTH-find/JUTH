@@ -12,6 +12,16 @@
         android:id="@+id/create_group_toolbar"
         layout="@layout/app_bar_layout"></include>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="269dp"
+        android:layout_height="315dp"
+        app:layout_constraintBottom_toTopOf="@+id/group_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_group_toolbar"
+        app:srcCompat="@drawable/usertest" />
+
     <EditText
         android:id="@+id/group_name"
         android:layout_width="202dp"
@@ -38,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/group_description"
@@ -63,10 +73,10 @@
         android:padding="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/create_group_button"
@@ -86,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/group_description"
-        app:layout_constraintVertical_bias="0.217" />
+        app:layout_constraintVertical_bias="0.394" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
