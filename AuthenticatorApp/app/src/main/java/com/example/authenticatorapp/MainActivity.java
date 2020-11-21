@@ -77,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext() , SettingsActivity.class));
             finish();
         }
-        if(item.getItemId() == R.id.main_find_friends_option){
 
-        }
         return true;
     }
 }
