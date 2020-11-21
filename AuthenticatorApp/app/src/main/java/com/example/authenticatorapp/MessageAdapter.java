@@ -29,7 +29,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
     Context context;
     List<Message> messages;
     DatabaseReference messagedb;
-    CircleImageView image;
 
     public MessageAdapter(Context context, List<Message> messages, DatabaseReference messagedb){
         this.context = context;
@@ -55,7 +54,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
 
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(image);
+                Picasso.get().load(uri).into(holder.image);
             }
         });
 
@@ -81,6 +80,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageA
 
         TextView tvTitle;
         LinearLayout l1;
+        CircleImageView image;
         public MessageAdapterViewHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle1);
