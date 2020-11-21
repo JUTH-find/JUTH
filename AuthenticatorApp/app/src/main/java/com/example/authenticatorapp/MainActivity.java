@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(item.getItemId() == R.id.main_settings_option){
             startActivity(new Intent(getApplicationContext() , SettingsActivity.class));
-            finish();
         }
 
         return true;

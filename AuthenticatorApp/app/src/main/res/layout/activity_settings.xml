@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
-
+    <include
+        android:id="@+id/create_group_toolbar"
+        layout="@layout/app_bar_layout"></include>
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="289dp"

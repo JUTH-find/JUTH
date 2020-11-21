@@ -3,6 +3,7 @@ package com.example.authenticatorapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class group_join_activity extends AppCompatActivity {
     private Button joinGroupBtn,delGroupBtn;
     private DatabaseReference dataRef;
     private FirebaseAuth fAuth;
+    private Toolbar mToolbar;
 
 
     @Override
@@ -43,8 +45,13 @@ public class group_join_activity extends AppCompatActivity {
 
         dataRef= FirebaseDatabase.getInstance().getReference();
 
-
         retrieveGroupInfo();
+        mToolbar = (Toolbar) findViewById(R.id.create_group_toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Join Group");
 
 
         joinGroupBtn.setOnClickListener(new View.OnClickListener() {

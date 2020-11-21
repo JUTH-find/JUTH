@@ -13,8 +13,10 @@
         android:theme="@style/Theme.AuthenticatorApp">
         <activity android:name=".ThankYou"></activity>
         <activity android:name=".MainActivity2" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".group_join_activity" />
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".group_join_activity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".Create_group"
             android:parentActivityName=".MainActivity" />
